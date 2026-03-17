@@ -2,6 +2,8 @@ import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import Lenis from '@studio-freight/lenis'
 import SiteFooter from '../components/SiteFooter'
+import GalleryMasonrySection from '../components/GallaryMasonrySection'
+import CustomerExperienceSection from '../components/CustomerExperienceSection'
 
 const menuHighlights = [
   {
@@ -105,15 +107,6 @@ export default function HomePage() {
         <section className="relative z-10 grid items-center gap-10 py-16 md:grid-cols-2">
           <div className="hero-fade-in-up">
 
-            <p className="hero-kicker mb-4 inline-block rounded-full border border-saffron/40 px-4 py-1 text-xs uppercase tracking-[0.2em] text-saffron">
-              Premium Nepali Tea Experience
-            </p>
-            <h1 className="text-4xl font-extrabold leading-tight md:text-6xl">
-              <span className="hero-title-line block">Chiya, Coffee & Snacks</span>
-              <span className="hero-title-line hero-title-line-delay block text-saffron">with a Kathmandu Soul</span>
-            </h1>
-            <p className="hero-subtitle mt-5 max-w-lg text-base text-cream/80 md:text-lg">
-
             <p className="mb-4 inline-block rounded-full border border-saffron/40 px-4 py-1 text-xs uppercase tracking-[0.2em] text-saffron">
               Premium Nepali Tea Experience
             </p>
@@ -203,6 +196,9 @@ export default function HomePage() {
             ))}
           </div>
         </section>
+
+        <GalleryMasonrySection />
+        <CustomerExperienceSection />
 
         <section id="visit" className="mt-14 rounded-3xl border border-maroon/50 bg-maroon/20 p-8 text-center">
           <h2 className="text-3xl font-bold">Visit Our Flagship Cafe</h2>

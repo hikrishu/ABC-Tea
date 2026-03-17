@@ -90,6 +90,7 @@ h3,
   }
 }
 
+
 .hero-kicker {
   animation: hero-stagger-reveal 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
   animation-delay: 0.06s;
@@ -131,3 +132,114 @@ h3,
   }
 }
 
+
+
+.customer-experience-shell {
+  position: relative;
+  overflow: hidden;
+}
+
+.customer-experience-shell::before {
+  content: '';
+  position: absolute;
+  inset: -60% auto auto -30%;
+  width: 380px;
+  height: 380px;
+  border-radius: 9999px;
+  background: radial-gradient(circle, rgba(193, 120, 23, 0.24), rgba(193, 120, 23, 0));
+  pointer-events: none;
+}
+
+.customer-card {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.45s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+}
+
+.customer-card.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.customer-card:hover {
+  transform: translateY(-6px) rotate(-0.4deg);
+  border-color: rgba(193, 120, 23, 0.45);
+  box-shadow: 0 12px 34px rgba(193, 120, 23, 0.18);
+}
+
+.customer-shine {
+  position: absolute;
+  inset: -140% 30% auto -130%;
+  height: 320%;
+  background: linear-gradient(115deg, transparent 40%, rgba(255, 255, 255, 0.2) 50%, transparent 60%);
+  transform: rotate(12deg);
+  transition: transform 0.8s ease;
+}
+
+.customer-card:hover .customer-shine {
+  transform: translateX(250%) rotate(12deg);
+}
+
+.experience-emoji {
+  animation: emoji-pop 2.4s ease-in-out infinite;
+}
+
+.gallery-card {
+  opacity: 0;
+  transform: translateY(12px) scale(0.99);
+  transition: transform 0.45s ease, opacity 0.45s ease, border-color 0.35s ease;
+}
+
+.gallery-card.is-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.gallery-card:hover {
+  transform: translateY(-6px) scale(1.01);
+  border-color: rgba(193, 120, 23, 0.55);
+}
+
+.gallery-image {
+  transition: transform 0.9s ease;
+}
+
+.gallery-card.is-visible .gallery-image {
+  animation: ken-burns-subtle 12s ease-in-out infinite alternate;
+}
+
+.gallery-card:hover .gallery-image {
+  transform: scale(1.08);
+}
+
+.gallery-overlay {
+  opacity: 0.72;
+  transition: opacity 0.35s ease;
+}
+
+.gallery-card:hover .gallery-overlay {
+  opacity: 0.9;
+}
+
+
+@keyframes ken-burns-subtle {
+  0% {
+    transform: scale(1.02);
+  }
+  100% {
+    transform: scale(1.08);
+  }
+}
+
+@keyframes emoji-pop {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+  45% {
+    transform: translateY(-2px) scale(1.15);
+  }
+  70% {
+    transform: translateY(0) scale(1.02);
+  }
+}
