@@ -49,7 +49,8 @@ export default function App() {
               Premium Nepali Tea Experience
             </p>
             <h1 className="text-4xl font-extrabold leading-tight md:text-6xl">
-              Chiya, Coffee & Snacks<br />
+              Chiya, Coffee & Snacks
+              <br />
               <span className="text-saffron">with a Kathmandu Soul</span>
             </h1>
             <p className="mt-5 max-w-lg text-base text-cream/80 md:text-lg">
@@ -129,7 +130,52 @@ export default function App() {
             Get Directions & Offers
           </button>
         </section>
+
+        <section id="contact" className="mt-14 grid gap-6 rounded-3xl border border-cream/15 bg-black/25 p-8 md:grid-cols-2">
+          <div>
+            <p className="text-xs uppercase tracking-[0.2em] text-saffron">Contact Us</p>
+            <h2 className="mt-2 text-3xl font-bold">Book a table or ask anything</h2>
+            <p className="mt-3 text-cream/80">
+              We are happy to help with reservations, private tea tastings, cafe events, and franchise conversations.
+            </p>
+
+            <div className="mt-6 space-y-3 text-sm text-cream/90">
+              <p><span className="font-semibold text-saffron">Phone:</span> +977-1-5554321</p>
+              <p><span className="font-semibold text-saffron">Email:</span> hello@abctea.com</p>
+              <p><span className="font-semibold text-saffron">Address:</span> Durbar Marg, Kathmandu 44600, Nepal</p>
+              <p><span className="font-semibold text-saffron">Hours:</span> Sun-Fri 7:00 AM - 10:00 PM</p>
+            </div>
+
+            <a
+              href="https://maps.app.goo.gl/w378txK2BNUvekhM8"
+              target="_blank"
+              rel="noreferrer"
+              className="mt-6 inline-block rounded-full bg-saffron px-6 py-3 text-sm font-semibold text-black transition hover:scale-105"
+            >
+              Open Google Map
+            </a>
+          </div>
+
+          <div className="overflow-hidden rounded-2xl border border-saffron/30">
+            <iframe
+              title="ABC Tea & Cafe Location"
+              src="https://www.google.com/maps?q=https://maps.app.goo.gl/w378txK2BNUvekhM8&output=embed"
+              width="100%"
+              height="100%"
+              className="min-h-[320px]"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            />
+          </div>
+        </section>
       </main>
+
+      <footer className="border-t border-cream/15 bg-black/35">
+        <div className="mx-auto flex max-w-6xl flex-col gap-2 px-6 py-6 text-sm text-cream/75 md:flex-row md:items-center md:justify-between">
+          <p>© {new Date().getFullYear()} ABC Tea & Cafe. Crafted with Nepali warmth.</p>
+          <p>Chiya • Coffee • Snacks • Community</p>
+        </div>
+      </footer>
     </div>
   )
 }
