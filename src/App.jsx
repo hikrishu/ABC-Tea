@@ -49,7 +49,8 @@ export default function App() {
               Premium Nepali Tea Experience
             </p>
             <h1 className="text-4xl font-extrabold leading-tight md:text-6xl">
-              Chiya, Coffee & Snacks<br />
+              Chiya, Coffee & Snacks
+              <br />
               <span className="text-saffron">with a Kathmandu Soul</span>
             </h1>
             <p className="mt-5 max-w-lg text-base text-cream/80 md:text-lg">
