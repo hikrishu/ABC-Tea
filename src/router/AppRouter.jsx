@@ -1,11 +1,9 @@
-
-
 import { Navigate, Route, Routes } from 'react-router-dom'
-import HomePage from './pages/HomePage'
-import SignatureMenuPage from './pages/SignatureMenuPage'
-import FranchiseEventsPage from './pages/FranchiseEventsPage'
+import HomePage from '../pages/HomePage'
+import SignatureMenuPage from '../pages/SignatureMenuPage'
+import FranchiseEventsPage from '../pages/FranchiseEventsPage'
 
-export default function App() {
+export default function AppRouter() {
   return (
     <Routes>
       <Route path="/" element={<HomePage />} />
@@ -15,5 +13,3 @@ export default function App() {
     </Routes>
   )
 }
-
-
