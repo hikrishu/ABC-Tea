@@ -1,19 +1,7 @@
-codex/create-landing-page-for-tea-cafe-shop-0zni3n
-import { Navigate, Route, Routes } from 'react-router-dom'
-import HomePage from './pages/HomePage'
-import SignatureMenuPage from './pages/SignatureMenuPage'
-import FranchiseEventsPage from './pages/FranchiseEventsPage'
-
-export default function App() {
-  return (
-    <Routes>
-      <Route path="/" element={<HomePage />} />
-      <Route path="/signature-menu" element={<SignatureMenuPage />} />
-      <Route path="/franchise-events" element={<FranchiseEventsPage />} />
-      <Route path="*" element={<Navigate to="/" replace />} />
-    </Routes>
-  )
-}
+import { useEffect } from 'react'
+import { Link } from 'react-router-dom'
+import Lenis from '@studio-freight/lenis'
+import SiteFooter from '../components/SiteFooter'
 
 const menuHighlights = [
   {
@@ -44,47 +32,106 @@ const features = [
   'Warm premium ambience with modern Newa-inspired design',
 ]
 
-export default function App() {
+const navItems = [
+  { label: 'Home', id: 'home' },
+  { label: 'About', id: 'about' },
+  { label: 'Menu', id: 'menu' },
+  { label: 'Visit', id: 'visit' },
+  { label: 'Contact', id: 'contact' },
+]
+
+export default function HomePage() {
+  useEffect(() => {
+    const lenis = new Lenis({
+      duration: 1.2,
+      smoothWheel: true,
+      wheelMultiplier: 0.95,
+      touchMultiplier: 1.2,
+      easing: (t) => 1 - Math.pow(1 - t, 3),
+    })
+
+    let rafId
+    const raf = (time) => {
+      lenis.raf(time)
+      rafId = requestAnimationFrame(raf)
+    }
+
+    rafId = requestAnimationFrame(raf)
+    window.lenis = lenis
+
+    return () => {
+      cancelAnimationFrame(rafId)
+      lenis.destroy()
+      delete window.lenis
+    }
+  }, [])
+
+  const handleNavClick = (sectionId) => (event) => {
+    event.preventDefault()
+    const target = document.getElementById(sectionId)
+    if (!target) return
+
+    if (window.lenis) {
+      window.lenis.scrollTo(target, { offset: -20 })
+      return
+    }
+
+    target.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }
+
   return (
-    <div className="min-h-screen bg-hero-gradient text-cream">
-      <header className="mx-auto max-w-6xl px-6 py-8">
-        <nav className="flex items-center justify-between rounded-full border border-saffron/30 bg-black/20 px-6 py-3 backdrop-blur">
+    <div id="home" className="min-h-screen bg-hero-gradient text-cream">
+      <header className="relative mx-auto max-w-6xl overflow-hidden px-6 py-8">
+        <div className="hero-orb hero-orb-left" />
+        <div className="hero-orb hero-orb-right" />
+
+        <nav className="relative z-10 flex items-center justify-between rounded-full border border-saffron/30 bg-black/25 px-6 py-3 backdrop-blur">
           <p className="font-display text-xl font-bold tracking-wide">ABC Tea & Cafe</p>
           <div className="hidden gap-8 text-sm md:flex">
-            <a href="#menu" className="hover:text-saffron">Menu</a>
-            <a href="#about" className="hover:text-saffron">About</a>
-            <a href="#visit" className="hover:text-saffron">Visit</a>
+            {navItems.map((item) => (
+              <a key={item.id} href={`#${item.id}`} onClick={handleNavClick(item.id)} className="hover:text-saffron">
+                {item.label}
+              </a>
+            ))}
           </div>
-          <button className="rounded-full bg-saffron px-5 py-2 text-sm font-semibold text-black shadow-glow transition hover:scale-105">
+          <button
+            onClick={handleNavClick('contact')}
+            className="rounded-full bg-saffron px-5 py-2 text-sm font-semibold text-black shadow-glow transition hover:scale-105"
+          >
             Reserve Table
           </button>
         </nav>
 
-        <section className="grid items-center gap-10 py-16 md:grid-cols-2">
-          <div>
+        <section className="relative z-10 grid items-center gap-10 py-16 md:grid-cols-2">
+          <div className="hero-fade-in-up">
             <p className="mb-4 inline-block rounded-full border border-saffron/40 px-4 py-1 text-xs uppercase tracking-[0.2em] text-saffron">
               Premium Nepali Tea Experience
             </p>
             <h1 className="text-4xl font-extrabold leading-tight md:text-6xl">
-              Chiya, Coffee & Snacks
-              <br />
+              Chiya, Coffee & Snacks<br />
               <span className="text-saffron">with a Kathmandu Soul</span>
             </h1>
             <p className="mt-5 max-w-lg text-base text-cream/80 md:text-lg">
-              We blend heritage flavors with luxury cafe comfort—crafted for locals, tourists, and every tea lover looking for a saleable, memorable destination.
+              We blend heritage flavors with luxury cafe comfort-crafted for locals, tourists, and every tea lover looking for a memorable destination.
             </p>
             <div className="mt-8 flex flex-wrap gap-4">
-              <button className="rounded-full bg-maroon px-6 py-3 text-sm font-semibold shadow-lg transition hover:bg-maroon/80">
+              <Link
+                to="/signature-menu"
+                className="rounded-full bg-maroon px-6 py-3 text-sm font-semibold shadow-lg transition hover:bg-maroon/80"
+              >
                 Explore Signature Menu
-              </button>
-              <button className="rounded-full border border-cream/40 px-6 py-3 text-sm font-semibold transition hover:border-saffron hover:text-saffron">
+              </Link>
+              <Link
+                to="/franchise-events"
+                className="rounded-full border border-cream/40 px-6 py-3 text-sm font-semibold transition hover:border-saffron hover:text-saffron"
+              >
                 Franchise & Events
-              </button>
+              </Link>
             </div>
           </div>
 
-          <div className="rounded-3xl border border-saffron/30 bg-black/30 p-7 shadow-glow backdrop-blur">
-            <p className="text-sm uppercase tracking-[0.2em] text-saffron">Today’s Spotlight</p>
+          <div className="hero-float rounded-3xl border border-saffron/30 bg-black/35 p-7 shadow-glow backdrop-blur">
+            <p className="text-sm uppercase tracking-[0.2em] text-saffron">Today&apos;s Spotlight</p>
             <h2 className="mt-3 text-3xl font-bold">Royal Chiya Tasting Set</h2>
             <p className="mt-3 text-cream/80">
               Try 3 premium brews with paired Nepali snacks. Designed for social media-worthy moments and repeat customers.
@@ -116,9 +163,17 @@ export default function App() {
         </section>
 
         <section id="menu">
-          <div className="mb-6 flex items-end justify-between">
-            <h2 className="text-3xl font-bold">Best Selling Menu</h2>
-            <p className="text-sm text-cream/70">Made fresh every day</p>
+          <div className="mb-6 flex items-end justify-between gap-4">
+            <div>
+              <h2 className="text-3xl font-bold">Best Selling Menu</h2>
+              <p className="text-sm text-cream/70">Made fresh every day</p>
+            </div>
+            <Link
+              to="/signature-menu"
+              className="rounded-full border border-saffron/40 px-4 py-2 text-xs font-semibold uppercase tracking-[0.12em] text-saffron transition hover:bg-saffron/10"
+            >
+              View Full Signature Menu
+            </Link>
           </div>
           <div className="grid gap-4 md:grid-cols-2">
             {menuHighlights.map((item) => (
@@ -141,9 +196,12 @@ export default function App() {
         <section id="visit" className="mt-14 rounded-3xl border border-maroon/50 bg-maroon/20 p-8 text-center">
           <h2 className="text-3xl font-bold">Visit Our Flagship Cafe</h2>
           <p className="mx-auto mt-3 max-w-2xl text-cream/85">
-            Durbar Marg, Kathmandu · Open 7 AM to 10 PM · Live acoustic evenings on Fridays.
+            Durbar Marg, Kathmandu | Open 7 AM to 10 PM | Live acoustic evenings on Fridays.
           </p>
-          <button className="mt-6 rounded-full bg-saffron px-6 py-3 font-semibold text-black transition hover:scale-105">
+          <button
+            onClick={handleNavClick('contact')}
+            className="mt-6 rounded-full bg-saffron px-6 py-3 font-semibold text-black transition hover:scale-105"
+          >
             Get Directions & Offers
           </button>
         </section>
@@ -187,13 +245,7 @@ export default function App() {
         </section>
       </main>
 
-      <footer className="border-t border-cream/15 bg-black/35">
-        <div className="mx-auto flex max-w-6xl flex-col gap-2 px-6 py-6 text-sm text-cream/75 md:flex-row md:items-center md:justify-between">
-          <p>© {new Date().getFullYear()} ABC Tea & Cafe. Crafted with Nepali warmth.</p>
-          <p>Chiya • Coffee • Snacks • Community</p>
-        </div>
-      </footer>
+      <SiteFooter />
     </div>
   )
 }
-main
