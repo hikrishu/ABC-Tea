@@ -1,4 +1,9 @@
-codex/create-landing-page-for-tea-cafe-shop-0zni3n
+import AppRouter from './router/AppRouter'
+
+export default function App() {
+  return <AppRouter />
+}
+
 import { Navigate, Route, Routes } from 'react-router-dom'
 import HomePage from './pages/HomePage'
 import SignatureMenuPage from './pages/SignatureMenuPage'
@@ -196,4 +201,5 @@ export default function App() {
     </div>
   )
 }
-main
+
+
