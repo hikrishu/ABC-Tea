@@ -104,6 +104,7 @@ export default function HomePage() {
 
         <section className="relative z-10 grid items-center gap-10 py-16 md:grid-cols-2">
           <div className="hero-fade-in-up">
+
             <p className="hero-kicker mb-4 inline-block rounded-full border border-saffron/40 px-4 py-1 text-xs uppercase tracking-[0.2em] text-saffron">
               Premium Nepali Tea Experience
             </p>
@@ -112,6 +113,16 @@ export default function HomePage() {
               <span className="hero-title-line hero-title-line-delay block text-saffron">with a Kathmandu Soul</span>
             </h1>
             <p className="hero-subtitle mt-5 max-w-lg text-base text-cream/80 md:text-lg">
+
+            <p className="mb-4 inline-block rounded-full border border-saffron/40 px-4 py-1 text-xs uppercase tracking-[0.2em] text-saffron">
+              Premium Nepali Tea Experience
+            </p>
+            <h1 className="text-4xl font-extrabold leading-tight md:text-6xl">
+              Chiya, Coffee & Snacks<br />
+              <span className="text-saffron">with a Kathmandu Soul</span>
+            </h1>
+            <p className="mt-5 max-w-lg text-base text-cream/80 md:text-lg">
+
               We blend heritage flavors with luxury cafe comfort-crafted for locals, tourists, and every tea lover looking for a memorable destination.
             </p>
             <div className="mt-8 flex flex-wrap gap-4">
