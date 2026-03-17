@@ -94,3 +94,32 @@ npm run dev
 - `npm run dev` → start dev server
 - `npm run build` → production build
 - `npm run preview` → preview production build
+
+
+---
+
+## 6) Push this project to GitHub
+
+If you already created an empty GitHub repository (for example `https://github.com/<your-username>/ABC-Tea`), run:
+
+```bash
+git remote add origin https://github.com/<your-username>/ABC-Tea.git
+git push -u origin work
+```
+
+If your default branch on GitHub is `main` and you want this code there:
+
+```bash
+git checkout -b main
+git push -u origin main
+```
+
+### Authentication notes
+
+- If prompted for password in HTTPS push, use a **GitHub Personal Access Token (PAT)** instead of your account password.
+- Or configure SSH and use:
+
+```bash
+git remote set-url origin git@github.com:<your-username>/ABC-Tea.git
+git push -u origin work
+```
